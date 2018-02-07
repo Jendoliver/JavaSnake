@@ -1,38 +1,56 @@
 package com.jendoliver.model;
 
+import com.jendoliver.engine.Vector2;
+
 public class SnakePart
 {
-	public static final int SIZE = 10;
-	
-	private int posX;
-	private int posY;
+	private int size;
+	private Vector2 position;
 	private SnakePart previous;
 	
 	public SnakePart(int posX, int posY, SnakePart previous)
 	{
-		this.posX = posX;
-		this.posY = posY;
+		size = 10;
+		this.position = new Vector2();
+		this.position.X = posX;
+		this.position.Y = posY;
 		this.previous = previous;
+	}
+	
+	public SnakePart(Vector2 position, SnakePart previous)
+	{
+		this.position = position;
+		this.previous = previous;
+	}
+	
+	public int getSize() 
+	{
+		return size;
+	}
+	
+	public Vector2 getPosition()
+	{
+		return position;
 	}
 
 	public int getPosX() 
 	{
-		return posX;
+		return position.X;
 	}
 
 	public void setPosX(int posX) 
 	{
-		this.posX = posX;
+		this.position.X = posX;
 	}
 
 	public int getPosY() 
 	{
-		return posY;
+		return position.Y;
 	}
 
 	public void setPosY(int posY) 
 	{
-		this.posY = posY;
+		this.position.Y = posY;
 	}
 
 	public SnakePart getPrevious() 
