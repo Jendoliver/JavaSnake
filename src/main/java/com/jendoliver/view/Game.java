@@ -4,10 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Vector;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import com.jendoliver.engine.control.GameContainer;
 import com.jendoliver.engine.utils.Vector2;
@@ -26,6 +24,7 @@ public class Game
 	private static Snake snake;
 	private static FoodPiece foodPiece;
 	
+	@SuppressWarnings("serial")
 	public static void main(String[] args) 
 	{
 		/**
@@ -36,7 +35,7 @@ public class Game
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
-		container = new GameContainer(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_SPEED, MIN_GAME_SPEED) 
+		container = new GameContainer(WINDOW_WIDTH, WINDOW_HEIGHT, GAME_SPEED, MIN_GAME_SPEED)  // FIXME change this shit
 		{
 			@Override
 			public void paintComponent(Graphics g) 

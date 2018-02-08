@@ -1,8 +1,5 @@
 /**
- * 
- */
-/**
- * @author Jandol
+ * @author Jendoliver
  *
  */
 package com.jendoliver.engine.entity;

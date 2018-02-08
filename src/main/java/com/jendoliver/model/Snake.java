@@ -7,7 +7,6 @@ import java.util.List;
 
 import com.jendoliver.engine.entity.Drawable;
 import com.jendoliver.engine.utils.Vector2;
-import com.jendoliver.view.Game;
 
 public class Snake implements Drawable
 {
