@@ -5,31 +5,36 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jendoliver.engine.Drawable;
+import com.jendoliver.engine.entity.Drawable;
+import com.jendoliver.engine.utils.Vector2;
 import com.jendoliver.view.Game;
 
 public class Snake implements Drawable
 {
-	public static final int INITIAL_X = Game.WINDOW_WIDTH / 2;
-	public static final int INITIAL_Y = Game.WINDOW_HEIGHT / 2;
-	
 	private SnakePart first;
 	private SnakePart last;
 	private List<SnakePart> body;
-	private int speedX = 0;
-	private int speedY = -1;
+	private Vector2 speed;
 	
-	public Snake()
+	public Snake() { this(500, 500); }
+	public Snake(int initialPositionX, int initialPositionY) { this(new Vector2(initialPositionX, initialPositionY)); }
+	
+	public Snake(Vector2 initialPosition)
 	{
+		speed = new Vector2(0, -1);
 		body = new ArrayList<>();
-		first = new SnakePart(INITIAL_X, INITIAL_Y, null);
-		last = new SnakePart(INITIAL_X, INITIAL_Y + first.getSize(), first);
+		first = new SnakePart(initialPosition.X, initialPosition.Y, null);
+		last = new SnakePart(initialPosition.X, initialPosition.Y + first.getSize(), first);
 		body.add(first);
 		body.add(last);
 	}
 	
-	public void setSpeedX(int speedX) { this.speedX = speedX; }
-	public void setSpeedY(int speedY) { this.speedY = speedY; }
+	public Vector2 getSpeed() { return speed; }
+	public void setSpeed(Vector2 speed) { this.speed = speed; }
+	public int getSpeedX() { return speed.X; }
+	public int getSpeedY() { return speed.Y; }
+	public void setSpeedX(int speedX) { this.speed.X = speedX; }
+	public void setSpeedY(int speedY) { this.speed.Y = speedY; }
 	
 	// TODO cambiar esta mierda por poner el ultimo delante del primero joakims aka kamut algorithm
 	// FIXME evitar que se pueda volver patras
@@ -42,8 +47,15 @@ public class Snake implements Drawable
 			snakePart.setPosX(previous.getPosX());
 			snakePart.setPosY(previous.getPosY());
 		}
-		first.setPosX(first.getPosX() + first.getSize() * speedX);
-		first.setPosY(first.getPosY() + first.getSize() * speedY);
+		first.setPosX(first.getPosX() + first.getSize() * speed.X);
+		first.setPosY(first.getPosY() + first.getSize() * speed.Y);
+	}
+	
+	public void grow()
+	{
+		SnakePart aux = last;
+		last = new SnakePart(aux.getPosX(), aux.getPosY(), aux);
+		body.add(last);
 	}
 	
 	public boolean collidesWithItself()

@@ -1,4 +1,4 @@
-package com.jendoliver.engine;
+package com.jendoliver.engine.entity;
 
 import java.awt.Graphics;
 

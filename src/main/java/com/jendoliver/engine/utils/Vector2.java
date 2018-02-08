@@ -1,9 +1,12 @@
-package com.jendoliver.engine;
+package com.jendoliver.engine.utils;
 
 public class Vector2 
 {
 	public int X;
 	public int Y;
+	
+	public Vector2() { }
+	public Vector2(int X, int Y) { this.X = X; this.Y = Y; }
 	
 	@Override
 	public int hashCode() 

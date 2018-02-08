@@ -1,6 +1,6 @@
 package com.jendoliver.model;
 
-import com.jendoliver.engine.Vector2;
+import com.jendoliver.engine.utils.Vector2;
 
 public class SnakePart
 {

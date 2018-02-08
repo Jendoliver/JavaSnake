@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
-import com.jendoliver.engine.Drawable;
-import com.jendoliver.engine.Vector2;
+import com.jendoliver.engine.entity.Drawable;
+import com.jendoliver.engine.utils.Vector2;
 
 public class FoodPiece implements Drawable
 {
@@ -16,8 +16,8 @@ public class FoodPiece implements Drawable
 	{
 		position = new Vector2();
 		Random random = new Random();
-		int randX = random.nextInt(gameContainerWidth);
-		int randY = random.nextInt(gameContainerHeight);
+		int randX = random.nextInt(gameContainerWidth - 1);
+		int randY = random.nextInt(gameContainerHeight - 1);
 		position.X = ((randX + 5) / 10) * 10;
 		position.Y = ((randY + 5) / 10) * 10;
 	}
